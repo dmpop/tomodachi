@@ -23,24 +23,23 @@ sudo apt full-upgrade -y
 sudo apt update
 
 # Install the required packages
-sudo apt install -y acl git gphoto2
+sudo apt install -y git wiringpi i2c-tools
 
 # Remove obsolete packages
 sudo apt autoremove -y
 
 # Clone and configure Little Backup Box
 cd
-git clone https://github.com/dmpop/little-expansion-board.git
-chmod +x little-expansion-board/scripts/*.sh
+git clone https://github.com/dmpop/tomodachi.git
+chmod +x tomodachi/scripts/*.sh
 
 # Add cronjob to start the select.sh script on boot
 crontab -l | {
     cat
-    echo "@reboot cd /home/"$USER"/little-expansion-board/scripts/ && sudo ./select.sh"
+    echo "@reboot cd /home/"$USER"/tomodachi/scripts/ && sudo ./select.sh"
 } | crontab
 
 # Install SSD1306 driver and its dependencies
-sudo apt install -y wiringpi i2c-tools
 git clone https://github.com/dmpop/ssd1306_rpi.git
 cd ssd1306_rpi
 cc -o oled oled.c fontx.c -lwiringPi -lpthread -DI2C
