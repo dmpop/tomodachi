@@ -1,0 +1,2 @@
+Show IP, sudo /home/pi/little-expansion-board/scripts/showip.sh
+Power off, sudo poweroff

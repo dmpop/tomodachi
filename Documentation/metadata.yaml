@@ -1,0 +1,11 @@
+---
+cover-image: bookcover.jpg
+stylesheet: stylesheet.css
+title:
+- type: main
+  text: Tomodachi Documentation
+creator:
+- role: author
+  text: Dmitri Popov
+publisher: Tōkyō Made
+rights: 2021, Dmitri Popov, CC BY-NC-SA 4.0
