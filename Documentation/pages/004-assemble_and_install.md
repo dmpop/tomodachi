@@ -33,7 +33,7 @@ To enable this functionality, make sure that the Raspberry Pi connected to the i
 
     curl -sSL https://raw.githubusercontent.com/dmpop/tomodachi/main/scripts/install.sh | bash
 
-Once the installation is completed and the Raspberry Pi is rebooted, the LCD display should show the _Hey there :-)_ message.
+Once the installation is completed and the Raspberry Pi is rebooted, the LCD display should show the Tomodachi welcome message.
 
 # Basic usage
 
@@ -47,7 +47,7 @@ To modify the _commands.txt_ file, you can either edit it directly on the Raspbe
 
 To configure this feature, create a snippet on GitLab and name it _commands.csv_. Add the desired commands to the snippet, including the following one (replace _2092222_ with the actual ID of the snippet):
 
-    Update commands, wget https://gitlab.com/-/snippets/2092222/raw/master/commands.cvs -O /home/pi/tomodachi/Scripts/
+    Update commands, wget https://gitlab.com/-/snippets/2092222/raw/master/commands.csv -O /home/pi/tomodachi/scripts/commands.csv
 
 Save the snippet, and note its ID. Now open the _commands.txt_ file on the Raspberry Pi, and add the command above to it too. Save the changes, then use the Tomodachi board to select and run the **Update commands** command to fetch the remote  _commands.txt_ file.
 

@@ -22,7 +22,9 @@ commands="commands.csv"
 n=$(wc -l <"$commands")
 
 sudo oled r
-sudo oled +a "Hello there! :-)"
+sudo oled +a " *------------*"
+sudo oled +b " | Tomodachi! |"
+sudo oled +c " *------------*"
 sudo oled s
 
 sudo echo 5 >/sys/class/gpio/export
