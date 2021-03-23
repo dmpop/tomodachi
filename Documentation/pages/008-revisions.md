@@ -1,3 +1,0 @@
-# Revision History
-
-## First release
