@@ -7,7 +7,7 @@ Since Tomodachi makes it possible to run commands and scripts on the Raspberry P
 1. Install MPlayer on the Raspberry Pi using the `sudo apt install mplayer` command.
 2. Create the _playlists_ folder in the _/home/pi_ directory.
 3. Use the [Community Radio Browser](https://www.radio-browser.info/) to find radio stations you like and download their PLS files to the _/home/pi/playlists_ directory.
-4. Open the _tomodachi/Scripts/commands.csv_ for editing and add the following commands (replace examples with actual names of radio stations and correct paths to their respective playlist files):
+4. Open the _tomodachi/scripts/commands.csv_ for editing and add the following commands (replace examples with actual names of radio stations and correct paths to their respective playlist files):
 ```
 Stop radio, eval sudo killall mplayer &>/dev/null & disown;
 Station 1, eval mplayer -playlist /home/pi/playlists/station1.pls &>/dev/null & disown;
@@ -23,7 +23,7 @@ Note that if you want to switch to a different station, you need to run the **St
 If your camera is supported by [gPhoto2](http://gphoto.org/), you can turn the Raspberry Pi into a tethered camera controller.
 
 1. Install gPhoto2 on the Raspberry Pi using the `sudo apt install gphoto2` command.
-2. Open the _tomodachi/Scripts/commands.csv_ for editing and add the following commands:
+2. Open the _tomodachi/scripts/commands.csv_ for editing and add the following commands:
 ```
 Capture, gphoto2 --capture-image
 Get all files, --get-all-files --skip-existing --filename %Y%m%d-%H%M%S-%03n.%C
@@ -36,6 +36,10 @@ The first command takes a photo, while the second one transfers all files from t
 5. Use the **SELECT** button to select the desired command and press **RUN** to stream it.
 
 ## Fetch weather conditions
+
+In addition to specifying direct commands, it's also possible to call external shell scripts from the _commands.csv_ file. This allows you to define complex multi-command actions. For example, you can create a script that displays weather conditions in a specific city and call the script from the command file.
+
+1. On the Raspberry Pi, run the `nano weather.sh` command and paste the following code into the blank text file (replace _Tokyo_ with the desired city):
 
 ```bash
 #!/usr/bin/env bash
@@ -51,4 +55,12 @@ sudo oled +d "Precip: $p"
 sudo oled s
 ```
 
-Weather, sudo /home/pi/weather.sh
+The script uses the _curl_ tool to fetch weather conditions via the [wttr.in](https://wttr.in/) service, parses the obtained data, and displays it on the screen.
+
+2. Save the file in the home directory (that is, _/home/pi_) and make the script executable using the `chmod +x weather.sh` command.
+3. Open the _tomodachi/scripts/commands.csv_ file for editing and add the following command to it:
+
+    Weather, sudo /home/pi/weather.sh
+
+4. Save the changes and reboot the Raspberry Pi.
+5. Use the **SELECT** button to select the **Weather** command and press **RUN** to run it.

@@ -52,3 +52,14 @@ To configure this feature, create a snippet on GitLab and name it _commands.csv_
     Update commands, wget https://gitlab.com/-/snippets/2092222/raw/master/commands.cvs -O /home/pi/tomodachi/Scripts/
 
 Save the snippet. Now open the _commands.txt_ file on the Raspberry Pi, and add the command above to it too. Save the changes, then select and run the **Update commands** command to fetch the remote  _commands.txt_ file.
+
+# Update Tomodachi
+
+To update Tomodachi, run the following commands on the Raspberry Pi:
+
+```bash
+cd /home/pi/tomodachi
+git stash
+git pull
+git stash pop
+```
