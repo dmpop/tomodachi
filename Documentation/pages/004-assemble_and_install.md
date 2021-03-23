@@ -20,7 +20,7 @@ To assemble the board, you need the following:
 
 # Install software
 
-To enable LEDs on the Tomodachi board, you need to configure the Raspberry Pi OS. To do this, add the following directives to the _config.txt_ file on the _boot_ partition of the storage card with Rapsberry Pi OS:
+To enable LEDs on the Tomodachi board, you need to configure the Raspberry Pi OS. To do this, add the following directives to the _config.txt_ file on the _boot_ partition of the storage card with Raspberry Pi OS:
 
 ```
 enable_uart=1
@@ -37,7 +37,7 @@ Once the installation is completed and the Raspberry Pi is rebooted, the LCD dis
 
 # Basic usage
 
-By default, the supplied _commands.csv_ in the _tomodachi/scripts_ directory list contains two commands: _Show IP_ and _Power off_. Use the **SELECT** button to select the first command, and press the **RUN** button. Assuming that the Raspberry Pi is connected to a network, you should see its IP address. To turn off the Raspberry Pi, use **SELECT** to choose the _Power off_ command and press **RUN**.
+By default, the supplied _tomodachi/scripts/commands.csv_ file contains two commands: _Show IP_ and _Power off_. Use the **SELECT** button to select the first command, and press the **RUN** button. Assuming that the Raspberry Pi is connected to a network, you should see its IP address. To turn off the Raspberry Pi, use **SELECT** to choose the _Power off_ command and press **RUN**.
 
 ## Edit commands
 

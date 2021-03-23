@@ -17,15 +17,37 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #######################################################################
 
+i=1
+commands="commands.csv"
+n=$(wc -l <"$commands")
+
+sudo oled r
+sudo oled +a "Hello there! :-)"
+sudo oled s
+
+sudo echo 5 >/sys/class/gpio/export
+sudo echo in >/sys/class/gpio/gpio5/direction
+sudo echo high >/sys/class/gpio/gpio5/direction
+
 sudo echo 26 >/sys/class/gpio/export
 sudo echo in >/sys/class/gpio/gpio26/direction
 sudo echo high >/sys/class/gpio/gpio26/direction
 
 while [ true ]; do
-    if [ "$(cat /sys/class/gpio/gpio26/value)" == '0' ]; then
-        command=$(head -n 1 .cmd)
+    if [ "$(cat /sys/class/gpio/gpio5/value)" == '0' ]; then
+        name=$(sed -n "${i}p" "$commands" | awk -F "\"*,\"*" '{print $1}')
+        command=$(sed -n "${i}p" "$commands" | awk -F "\"*,\"*" '{print $2}')
         sudo oled r
-        sudo oled +a "Done! :-)"
+        sudo oled +a "$name"
+        sudo oled s
+        i=$((i + 1))
+        if [ $i -gt $n ]; then
+            i=1
+        fi
+    fi
+    if [ "$(cat /sys/class/gpio/gpio26/value)" == '0' ]; then
+        sudo oled r
+        sudo oled +a "Running..."
         sudo oled s
         $command
     fi

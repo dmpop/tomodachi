@@ -36,7 +36,7 @@ chmod +x tomodachi/scripts/*.sh
 # Add cronjob to start the select.sh script on boot
 crontab -l | {
     cat
-    echo "@reboot cd /home/"$USER"/tomodachi/scripts/ && sudo ./select.sh"
+    echo "@reboot cd /home/"$USER"/tomodachi/scripts/ && sudo ./run.sh"
 } | crontab
 
 # Install SSD1306 driver and its dependencies
