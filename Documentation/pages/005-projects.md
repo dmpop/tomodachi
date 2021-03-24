@@ -60,7 +60,7 @@ sudo oled s
 
 The script uses the _curl_ tool to fetch weather conditions via the [wttr.in](https://wttr.in/) service, parses the obtained data, and displays it on the screen.
 
-2. Save the file in the home directory (that is, _/home/pi_) and make the script executable using the `chmod +x weather.sh` command.
+2. Save the file in the _/home/pi_ directory and make the script executable using the `chmod +x weather.sh` command.
 3. Open the _tomodachi/scripts/commands.csv_ file for editing and add the following command to it:
 
     Weather, sudo /home/pi/weather.sh
@@ -97,10 +97,37 @@ fi
 
 The `limit` variable determines when to trigger the ACT LED, which indicates that the storage capacity is nearing its limit. By default, it's set to 75% of used storage space, but you can adjust it, if necessary. You can also specify a different storage partition by modifying the value of the `part` variable.
 
-2. Save the file in the home directory (that is, _/home/pi_) and make the script executable using the `chmod +x usage.sh` command.
+2. Save the file in the _/home/pi_ directory and make the script executable using the `chmod +x usage.sh` command.
 3. Open the _tomodachi/scripts/commands.csv_ file for editing and add the following command to it:
 
     Storage usage, sudo /home/pi/usage.sh
 
 4. Save the changes and reboot the Raspberry Pi.
 5. Use the **SELECT** button to choose the **Storage usage** command and press **RUN** to run it.
+
+## Show stats
+
+You can use Tomodachi to display hardware stats.
+
+1. On the Raspberry Pi, run the `nano stats.sh` command and paste the following code into the blank text file:
+
+```bash
+#!/usr/bin/env bash
+temp=$(expr $(cat /sys/class/thermal/thermal_zone*/temp) / 1000)
+mem=$(printf "%0.2f\n" $(free | grep Mem | awk '{print $3/$2 * 100.0}'))
+cpu=$(vmstat | tail -1 | awk '{print $15}')
+sudo oled r
+sudo oled +a "==== STATS ===="
+sudo oled +b "- Tem: "$temp"C"
+sudo oled +c "- Mem: "$mem"%"
+sudo oled +d "- CPU: "$cpu"%"
+sudo oled s
+```
+
+2. Save the file in the _/home/pi_ directory and make the script executable using the `chmod +x stats.sh` command.
+3. Open the _tomodachi/scripts/commands.csv_ file for editing and add the following command to it:
+
+    Storage usage, sudo /home/pi/stats.sh
+
+4. Save the changes and reboot the Raspberry Pi.
+5. Use the **SELECT** button to choose the **Stats** command and press **RUN** to run it.
