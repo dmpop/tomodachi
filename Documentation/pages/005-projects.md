@@ -67,3 +67,40 @@ The script uses the _curl_ tool to fetch weather conditions via the [wttr.in](ht
 
 4. Save the changes and reboot the Raspberry Pi.
 5. Use the **SELECT** button to choose the **Weather** command and press **RUN** to run it.
+
+## Show storage usage
+
+You can use Tomodachi to display storage usage stats.
+
+1. On the Raspberry Pi, run the `nano usage.sh` command and paste the following code into the blank text file:
+
+```bash
+#!/usr/bin/env bash
+limit="75"
+part="root"
+used=$(df -h | grep $part | awk '{ print $3 }')
+used_int=$(df -h | grep $part | awk '{ print $5 }' | cut -d'%' -f1)
+avail=$(df -h | grep $part | awk '{ print $4 }')
+echo $avail
+percent=$(df -h | grep $part | awk '{ print $5 }')
+sudo oled r
+sudo oled +a "= $part ="
+sudo oled +b "Used: $used"
+sudo oled +c "Avail: $avail"
+sudo oled +d "Percent: $percent"
+sudo oled s
+if [ $used_int -gt $limit ]; then
+  sudo sh -c "echo timer > /sys/class/leds/led0/trigger"
+  sudo sh -c "echo 1000 > /sys/class/leds/led0/delay_on"
+fi
+```
+
+The `limit` variable determines when to trigger the ACT LED, which indicates that the storage capacity is nearing its limit. By default, it's set to 75% of used storage space, but you can adjust it, if necessary. You can also specify a different storage partition by modifying the value of the `part` variable.
+
+2. Save the file in the home directory (that is, _/home/pi_) and make the script executable using the `chmod +x usage.sh` command.
+3. Open the _tomodachi/scripts/commands.csv_ file for editing and add the following command to it:
+
+    Storage usage, sudo /home/pi/usage.sh
+
+4. Save the changes and reboot the Raspberry Pi.
+5. Use the **SELECT** button to choose the **Storage usage** command and press **RUN** to run it.
