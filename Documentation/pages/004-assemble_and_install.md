@@ -51,6 +51,22 @@ To configure this feature, create a snippet on GitLab and name it _commands.csv_
 
 Save the snippet, and note its ID. Now open the _commands.txt_ file on the Raspberry Pi, and add the command above to it too. Save the changes, then use the Tomodachi board to select and run the **Update commands** command to fetch the remote  _commands.txt_ file.
 
+It's also possible to configure the Raspberry Pi to fetch the latest command list automatically on every boot. Create a shell script containing the code below:
+
+```bash
+ip=$(hostname -I | cut -d' ' -f1)
+until [ ! -z "$ip" ]; do
+  sleep 1
+  wget https://gitlab.com/-/snippets/2092222/raw/master/commands.csv -O /home/pi/tomodachi/scripts/commands.csv
+done
+```
+
+Save the script under the _/home/pi/update-commands.sh_ name and make the script executable using the `chmod +x update-commands.sh` command. Run the `crontab -e` command and add the following cronjob:
+
+    @reboot sudo /home/pi/update-commands.sh
+
+Save the changes and reboot the Raspberry Pi.
+
 # Update Tomodachi
 
 To update Tomodachi, run the following commands on the Raspberry Pi:
