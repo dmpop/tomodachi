@@ -1,6 +1,6 @@
 # Tomodachi projects
 
-Since Tomodachi makes it possible to run practically any command and script on the Raspberry Pi, what you can use the board for is limited only by your imagination and programming skills. Here are a few project ideas you can use as stating points.
+Since Tomodachi makes it possible to run practically any command and script on the Raspberry Pi, what you can use the board for is limited only by your imagination and programming skills. Here are a few ideas you can use as stating points.
 
 ## Internet radio streaming
 
@@ -28,7 +28,7 @@ If your camera is supported by [gPhoto2](http://gphoto.org/), you can turn the R
 2. Open the _tomodachi/scripts/commands.csv_ for editing and add the following commands:
 
 ```
-Capture, gphoto2 --capture-image
+Capture, gphoto2 --capture-image-and-download --filename %Y%m%d-%H%M%S-%03n.%C
 Get all files, --get-all-files --skip-existing --filename %Y%m%d-%H%M%S-%03n.%C
 ```
 

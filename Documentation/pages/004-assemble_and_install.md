@@ -1,12 +1,12 @@
 # Introduction
 
-Tomodachi is a hardware add-on that extends functionality of a Raspberry Pi-compatible single-board computer. The board features a 128x64 LCD screen, two LEDs, and two push buttons. Thanks to its simplicity and versatility, the board can be put to a wide variety of practical and creative uses.
+Tomodachi is a hardware add-on that extends functionality of a Raspberry Pi-compatible single-board computer. The board features a 128x64 LCD screen, two LEDs, and two push buttons. Thanks to its simplicity and versatility, the board can be put to a variety of practical and creative uses.
 
-You can order an assembled and ready-to-use Tomodachi via [Gumroad](https://gum.co/tomodachi). Alternatively, you can assemble a board yourself. If you choose the DIY option, the first step is to order a PCB. While there are plenty of PCB manufacturers you can choose from, consider using [AISLER](https://aisler.net/) or [JLCPCB](https://jlcpcb.com/). AISLER manufactures PCBs in Germany, so it offers the fastest delivery. JLCPCB is based in China, and it offers the best prices and good quality.
+You can order an assembled and ready-to-use Tomodachi via [Gumroad](https://gum.co/tomodachi). Alternatively, you can assemble a board yourself. If you choose the latter option, the first step is to order a PCB. While there are plenty of PCB manufacturers you can choose from, consider using [AISLER](https://aisler.net/). The service using PCB manufacturing facilities in Germany, so it offers reasonable prices and the fastest delivery within Europe.
 
 Before you order a PCB, clone the Tomodachi Git repository using the `git clone https://github.com/dmpop/tomodachi.git` command. Alternatively, fetch the latest source code from the project's website and unpack the downloaded archive.
 
-To order a PCB from AISLER, upload the _tomodachi.kicad\_pcb_ file in the _tomodachi/KiCad_ folder. With JLCPCB, zip the _Tomodachi-Gerber_ directory and upload the resulting archive.
+To order a PCB from AISLER, upload the _tomodachi.kicad\_pcb_ file in the _tomodachi/KiCad_ folder. To place an order with other manufacturers, zip the _Tomodachi-Gerber_ directory and upload the resulting archive.
 
 To assemble the board, you need the following:
 
@@ -37,11 +37,11 @@ Once the installation is completed and the Raspberry Pi is rebooted, the LCD dis
 
 # Basic usage
 
-By default, the supplied _tomodachi/scripts/commands.csv_ file contains two commands: _Show IP_ and _Power off_. Use the **SELECT** button to select the first command, and press the **RUN** button. Assuming that the Raspberry Pi is connected to a network, you should see its IP address. To turn off the Raspberry Pi, use **SELECT** to choose the _Power off_ command and press **RUN**.
+By default, the supplied _tomodachi/scripts/commands.csv_ file contains two commands: _Show IP_ and _Power off_. Use the **SELECT** button to select the first command, and press the **RUN** button. Assuming that the Raspberry Pi is connected to a network, you should see the machine's IP address. To turn off the Raspberry Pi, use **SELECT** to choose the _Power off_ command and press **RUN**.
 
 ## Edit commands
 
-You can populate the _commands.txt_ file with custom commands, using the default entries as a starting point. Each entry must follow the `Description, Command` format. The second column may contain an actual command (for example, `touch file.txt`) or point to an existing script (for example, `/home/pi/script.sh`). You can add as many command entries as you need.
+You can populate the _commands.txt_ file with custom commands, using the default entries as a starting point. Each entry must follow the `Description, Command` format. The second column can contain an actual command (for example, `touch file.txt`) or point to an existing script (for example, `/home/pi/script.sh`). You can add as many command entries as you need.
 
 To modify the _commands.txt_ file, you can either edit it directly on the Raspberry Pi, or you do it from another machine via an SSH connection. There is, however, the third option: use a special command in the _commands.txt_ file itself to fetch another version of the file from a remote location. For example, you can create a snippet on [GitLab](https://gitlab.com/) containing the desired commands, and then download it to the Raspberry Pi. This way, you'll be able to edit commands from anywhere.
 

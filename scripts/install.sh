@@ -30,8 +30,14 @@ sudo apt autoremove -y
 
 # Clone and configure Little Backup Box
 cd
-git clone https://github.com/dmpop/tomodachi.git
-chmod +x tomodachi/scripts/*.sh
+if [ ! -d "tomodachi" ]; then
+    git clone https://github.com/dmpop/tomodachi.git
+    chmod +x tomodachi/scripts/*.sh
+else
+echo "The tomodachi directory already exists"
+echo "You might want to remove or reanme it."
+exit 1
+fi
 
 # Add cronjob to start the select.sh script on boot
 crontab -l | {
