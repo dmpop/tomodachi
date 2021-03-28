@@ -4,7 +4,7 @@ Tomodachi is a hardware add-on that extends functionality of a Raspberry Pi-comp
 
 Tomodachi was originally designed as a companion to [Little Backup Box](https://github.com/dmpop/little-backup-box). However, the accompanying shell scripts transform the Raspberry Pi into a self-contained appliance that can run custom commands via a programmable button-driven on-screen menu.
 
-<img src="https://i.imgur.com/aGLV1g7.jpg" width="800"/>
+<img src="https://i.imgur.com/N8ZOskp.jpg" width="800"/>
 
 You can order an assembled and ready-to-use Tomodachi board via [Gumroad](https://gum.co/tomodachi).
 
