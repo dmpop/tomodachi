@@ -2,11 +2,15 @@
 
 Tomodachi is a hardware add-on that extends the functionality of a Raspberry Pi-compatible single-board computer. The board features a 128x64 LCD screen, two LEDs, and two push buttons. Thanks to its simplicity and versatility, the board can be put to a variety of practical and creative uses.
 
+![](images/tomodachi-board.jpeg)
+
 You can order an assembled and ready-to-use Tomodachi via [Gumroad](https://gum.co/tomodachi). Alternatively, you can assemble a board yourself. If you choose the latter option, the first step is to order a PCB. While there are plenty of PCB manufacturers you can choose from, consider using [AISLER](https://aisler.net/). The service uses PCB manufacturing facilities in Germany, so it offers reasonable prices and the fastest delivery within Europe.
 
 Before you order a PCB, clone the Tomodachi Git repository using the `git clone https://github.com/dmpop/tomodachi.git` command. Alternatively, fetch the latest source code from the project's website and unpack the downloaded archive.
 
 To order a PCB from AISLER, upload the _tomodachi.kicad\_pcb_ file in the _tomodachi/KiCad_ folder. To place an order with other manufacturers, zip the _Tomodachi-Gerber_ directory and upload the resulting archive.
+
+![](images/tomodachi-components.jpeg)
 
 To assemble the board, you need the following:
 
