@@ -6,8 +6,6 @@ Tomodachi was originally designed as a companion to [Little Backup Box](https://
 
 <img src="https://i.imgur.com/N8ZOskp.jpg" width="800"/>
 
-You can order an assembled and ready-to-use Tomodachi board via [Gumroad](https://gum.co/tomodachi).
-
 ## Author
 
 [Dmitri Popov](https://www.tokyoma.de/)
