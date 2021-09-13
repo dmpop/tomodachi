@@ -35,7 +35,7 @@ if [ ! -d "tomodachi" ]; then
     chmod +x tomodachi/scripts/*.sh
 else
 echo "The tomodachi directory already exists"
-echo "You might want to remove or reanme it."
+echo "You might want to remove or rename it."
 exit 1
 fi
 
@@ -52,5 +52,6 @@ cc -o oled oled.c fontx.c -lwiringPi -lpthread -DI2C
 sudo cp oled /usr/local/bin/
 sudo chown root:root /usr/local/bin/oled
 sudo chmod 755 /usr/local/bin/oled
+sudo raspi-config nonint do_i2c 0
 
 sudo reboot
