@@ -52,6 +52,8 @@ cc -o oled oled.c fontx.c -lwiringPi -lpthread -DI2C
 sudo cp oled /usr/local/bin/
 sudo chown root:root /usr/local/bin/oled
 sudo chmod 755 /usr/local/bin/oled
+sudo bash -c 'echo "enable_uart=1" >> "/boot/config.txt"'
+sudo bash -c 'echo "dtparam=act_led_gpio=11" >> "/boot/config.txt"'
 sudo raspi-config nonint do_i2c 0
 
 sudo reboot
